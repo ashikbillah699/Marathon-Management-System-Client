@@ -1,8 +1,8 @@
-import logo from '../assets/my_logo.png'
+import { FaRunning } from 'react-icons/fa';
 
 const Navbar = () => {
     return (
-        <div className="navbar py-7">
+        <div className="navbar py-7 border-b-2">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -33,8 +33,10 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <img className='w-12 h-12' src={logo} alt="" />
-                <a className="btn btn-ghost italic pt-2 text-2xl text-[#ed4d2d] sm:hidden md:block ">Marathon Management System</a>
+                {/* <img className='w-12 h-12' src={logo} alt="" /> */}
+                <FaRunning className='w-12 h-12 text-red-500'/>
+                <a className="btn btn-ghost italic pt-2 text-2xl text-red-500">RACEPOINT</a>
+
             </div>
             <div className="navbar-end">
                 <div className="hidden lg:flex">
