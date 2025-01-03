@@ -1,9 +1,12 @@
+import Footer from "../common/Footer";
+import Navbar from "../common/Navbar";
 
 
 const MainLayout = () => {
     return (
-        <div>
-            this is main layout.
+        <div className="max-w-7xl mx-auto ">
+            <Navbar></Navbar>
+            <Footer></Footer>
         </div>
     );
 };
