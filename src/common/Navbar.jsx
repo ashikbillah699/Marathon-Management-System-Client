@@ -24,7 +24,7 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         <li className='mb-1'><NavLink to='/' className='text-black'>Home</NavLink></li>
-                        <li className='mb-1'><NavLink className='text-black'>Marathons</NavLink></li>
+                        <li className='mb-1'><NavLink to='/marathons' className='text-black'>Marathons</NavLink></li>
                         <li className='mb-1'>
                             <NavLink className='text-black'>Dashboard</NavLink>
                             <ul className="p-2">
@@ -36,14 +36,14 @@ const Navbar = () => {
                 </div>
                 {/* <img className='w-12 h-12' src={logo} alt="" /> */}
                 <FaRunning className='w-12 h-12 text-red-500'/>
-                <a className="btn btn-ghost italic pt-2 text-2xl text-red-500">RACEPOINT</a>
+                <NavLink to='/' className=" font-bold ml-3 italic pt-2 text-2xl text-red-500">RACEPOINT</NavLink>
 
             </div>
             <div className="navbar-end">
                 <div className="hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 z-[1]">
-                        <li className='mr-1'><NavLink className='text-white'>Home</NavLink></li>
-                        <li className='mr-1'><NavLink className='text-white'>Marathons</NavLink></li>
+                        <li className='mr-1'><NavLink to='/' className='text-white'>Home</NavLink></li>
+                        <li className='mr-1'><NavLink to='/marathons' className='text-white'>Marathons</NavLink></li>
                         <li className='mr-1'>
                             <details>
                                 <summary className='text-white'>Dashboard</summary>
@@ -55,8 +55,8 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <a className="mr-2 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Login</a>
-                <a className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign up</a>
+                <NavLink to='/login' className="mr-2 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Login</NavLink>
+                <NavLink to='/signUp' className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign up</NavLink>
                 {/* <a className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign Out</a> */}
                 {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
