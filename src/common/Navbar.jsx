@@ -1,11 +1,12 @@
 import { FaRunning } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
     return (
-        <div className="navbar py-7 border-b-2">
+        <div className="navbar py-7">
             <div className="navbar-start">
                 <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             className="h-5 w-5 text-white"
@@ -22,13 +23,13 @@ const Navbar = () => {
                     <ul
                         tabIndex={0}
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a className='text-black'>Home</a></li>
-                        <li><a className='text-black'>Marathons</a></li>
-                        <li>
-                            <a className='text-black'>Dashboard</a>
+                        <li className='mb-1'><NavLink to='/' className='text-black'>Home</NavLink></li>
+                        <li className='mb-1'><NavLink className='text-black'>Marathons</NavLink></li>
+                        <li className='mb-1'>
+                            <NavLink className='text-black'>Dashboard</NavLink>
                             <ul className="p-2">
-                                <li><a className='text-black'>Submenu 1</a></li>
-                                <li><a className='text-black'>Submenu 2</a></li>
+                                <li><NavLink className='mb-1 text-black'>Submenu 1</NavLink></li>
+                                <li><NavLink className='mb-1 text-black'>Submenu 2</NavLink></li>
                             </ul>
                         </li>
                     </ul>
@@ -40,15 +41,15 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 <div className="hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                        <li className='mr-1'><a className='text-white'>Home</a></li>
-                        <li className='mr-1'><a className='text-white'>Marathons</a></li>
+                    <ul className="menu menu-horizontal px-1 z-[1]">
+                        <li className='mr-1'><NavLink className='text-white'>Home</NavLink></li>
+                        <li className='mr-1'><NavLink className='text-white'>Marathons</NavLink></li>
                         <li className='mr-1'>
                             <details>
                                 <summary className='text-white'>Dashboard</summary>
                                 <ul className="p-2">
-                                    <li><a className='text-black'>Submenu</a></li>
-                                    <li><a className='text-black'>Submenu</a></li>
+                                    <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
+                                    <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
                                 </ul>
                             </details>
                         </li>

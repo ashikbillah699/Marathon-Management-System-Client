@@ -6,11 +6,11 @@ import Navbar from "../common/Navbar";
 const MainLayout = () => {
     return (
         <div >
-            <div className="max-w-7xl mx-auto ">
+            <div className="max-w-7xl mx-auto">
 
                 <Navbar></Navbar>
             </div>
-            <div>
+            <div className="">
                 <Outlet></Outlet>
             </div>
 
