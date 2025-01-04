@@ -3,6 +3,7 @@ import register_enimation from '../assets/Animation - 1733964488290.json'
 import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const SignUp = () => {
@@ -16,20 +17,25 @@ const SignUp = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
         console.log(fullName, photoUrl, email, password);
+        setError('')
         if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
             return setError('Password must contain at least 1 uppercase letter, 1 lowercase letter, and at least 6 characters long.')
         }
 
-
         getSignUp(email, password)
         .then(result=>{
             console.log(result.user)
+            if(result.user){
+                toast.success('Explore and enjoy our features today!')
+                e.target.reset();
+            }
         })
         .catch(err =>{
             console.log(err.message);
+            setError(err.message)
+            toast.error(err.message)
         })
     }
-
 
     return (
         <div className="relative max-w-7xl mx-auto">
