@@ -7,9 +7,10 @@ import toast from "react-hot-toast";
 
 
 const SignUp = () => {
-    const {getSignUp} = useContext(AuthContext);
+    const {getSignUp, googleSignUp, profileUpdate} = useContext(AuthContext);
     const [error, setError] = useState('')
 
+    // password Authentication sign up handle
     const handleSubmit = e => {
         e.preventDefault();
         const fullName = e.target.fullName.value;
@@ -28,11 +29,30 @@ const SignUp = () => {
             if(result.user){
                 toast.success('Explore and enjoy our features today!')
                 e.target.reset();
+                profileUpdate({
+                    displayName: fullName,
+                    photoURL: photoUrl
+                });
             }
         })
         .catch(err =>{
             console.log(err.message);
             setError(err.message)
+            toast.error(err.message)
+        })
+    }
+
+    // google signup handle
+    const handleGooleSignUp = () =>{
+        googleSignUp()
+        .then(result=>{
+            console.log(result.user)
+            if(result.user){
+                toast.success('Explore and enjoy our features today!')
+            }
+        })
+        .catch(err =>{
+            console.log(err.message);
             toast.error(err.message)
         })
     }
@@ -47,7 +67,7 @@ const SignUp = () => {
                         Access to all features. No credit card required.
                     </p>
 
-                    <button onClick="" className="btn btn-outline btn-block mb-4">
+                    <button onClick={handleGooleSignUp}  className="btn btn-outline btn-block mb-4">
                         <img
                             src="https://www.google.com/favicon.ico"
                             alt="Google"

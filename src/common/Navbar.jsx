@@ -1,7 +1,11 @@
+import { useContext } from 'react';
 import { FaRunning } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
+import { AuthContext } from '../provider/AuthProvider';
 
 const Navbar = () => {
+    const { getLogOut, user } = useContext(AuthContext);
+
     return (
         <div className="navbar py-7">
             <div className="navbar-start">
@@ -35,7 +39,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 {/* <img className='w-12 h-12' src={logo} alt="" /> */}
-                <FaRunning className='w-12 h-12 text-red-500'/>
+                <FaRunning className='w-12 h-12 text-red-500' />
                 <NavLink to='/' className=" font-bold ml-3 italic pt-2 text-2xl text-red-500">RACEPOINT</NavLink>
 
             </div>
@@ -55,16 +59,23 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <NavLink to='/login' className="mr-2 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Login</NavLink>
-                <NavLink to='/signUp' className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign up</NavLink>
-                {/* <a className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign Out</a> */}
-                {/* <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                {
+                  user &&  user ? <>
+                  <button onClick={getLogOut} className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign Out</button>
+                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
                         <img
                             alt="avator"
-                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+                            src={user && user?.photoURL} />
                     </div>
-                </div> */}
+                </div>
+                  </>
+                        : <>
+                            <NavLink to='/login' className="mr-2 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Login</NavLink>
+                            <NavLink to='/signUp' className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign up</NavLink>
+                        </>
+                }
+                
             </div>
         </div>
     );

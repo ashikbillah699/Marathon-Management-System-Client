@@ -1,9 +1,50 @@
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import login_enimation from '../assets/Animation - 1733964488290.json'
+import { useContext, useState } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const Login = () => {
+    const {getLogin, googleSignUp} = useContext(AuthContext);
+    const [error, setError] = useState('')
+
+    const handleSubmit = e =>{
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        setError('')
+
+        getLogin(email, password)
+        .then(result=>{
+            console.log(result.user)
+            if(result.user){
+                toast.success('Login successful! You are welcome!')
+                e.target.reset();
+            }
+        })
+        .catch(err =>{
+            console.log(err.message);
+            setError(err.message)
+            toast.error(err.message)
+        })
+    }
+
+    const handleGooleSignUp = () =>{
+        googleSignUp()
+        .then(result=>{
+            console.log(result.user)
+            if(result.user){
+                toast.success('Login successful! You are welcome!')
+            }
+        })
+        .catch(err =>{
+            console.log(err.message);
+            toast.error(err.message)
+        })
+    }
+
     return (
         <div className="relative max-w-7xl mx-auto">
             <div className="flex justify-center items-center my-16">
@@ -14,7 +55,7 @@ const Login = () => {
                         Access to all features. No credit card required.
                     </p>
 
-                    <button onClick='' className="btn btn-outline btn-block mb-4">
+                    <button onClick={handleGooleSignUp} className="btn btn-outline btn-block mb-4">
                         <img
                             src="https://www.google.com/favicon.ico"
                             alt="Google"
@@ -25,7 +66,7 @@ const Login = () => {
 
                     <p className="text-center text-sm text-gray-600 mb-4 divider">Or continue with</p>
 
-                    <form onSubmit=''>
+                    <form onSubmit={handleSubmit}>
                         <div className="form-control mb-4">
                             <label className="label">
                                 <span className="label-text">Email</span>
@@ -47,7 +88,7 @@ const Login = () => {
                                 placeholder="Password"
                                 className="input input-bordered"
                             />
-                            <small className="text-red-500">error massage</small>
+                            <small className="text-red-500">{error}</small>
                         </div>
                         <div className="form-control mb-6">
                             <label className="cursor-pointer flex items-center">

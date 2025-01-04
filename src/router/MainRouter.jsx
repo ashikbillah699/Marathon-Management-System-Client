@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Marathons from "../pages/Marathons";
 import Login from "../pages/Login";
 import SignUp from "../pages/SignUp";
+import PrivetRoute from "./PrivetRoute";
 
 
 const router = createBrowserRouter([
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/marathons',
-                element: <Marathons></Marathons>
+                element: <PrivetRoute><Marathons></Marathons></PrivetRoute>
             },
             {
                 path: '/login',
