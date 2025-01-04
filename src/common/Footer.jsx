@@ -1,6 +1,7 @@
 import { CiPhone } from "react-icons/ci";
 import { FaRunning } from 'react-icons/fa';
 import { MdOutlineLocationSearching, MdOutlineMail } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -35,12 +36,12 @@ const Footer = () => {
                     <div className="w-full md:w-1/4 mb-6">
                         <h3 className="text-lg font-semibold text-red-500">Company</h3>
                         <ul className="mt-2 space-y-2">
+                            <li className="text-muted-foreground text-gray-300"><Link to='/'>Home</Link></li>
+                            <li className="text-muted-foreground text-gray-300"><Link to='/marathons'>Marathons</Link></li>
                             <li className="text-muted-foreground text-gray-300">About us</li>
                             <li className="text-muted-foreground text-gray-300">Latest events</li>
                             <li className="text-muted-foreground text-gray-300">How It Works</li>
                             <li className="text-muted-foreground text-gray-300">News & articles</li>
-                            <li className="text-muted-foreground text-gray-300">Contact us</li>
-                            <li className="text-muted-foreground text-gray-300">Testimonial</li>
                         </ul>
                     </div>
                     <div className="w-full md:w-1/4 mb-6">

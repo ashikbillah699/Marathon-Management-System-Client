@@ -29,13 +29,17 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                         <li className='mb-1'><NavLink to='/' className='text-black'>Home</NavLink></li>
                         <li className='mb-1'><NavLink to='/marathons' className='text-black'>Marathons</NavLink></li>
-                        <li className='mb-1'>
-                            <NavLink className='text-black'>Dashboard</NavLink>
-                            <ul className="p-2">
-                                <li><NavLink className='mb-1 text-black'>Submenu 1</NavLink></li>
-                                <li><NavLink className='mb-1 text-black'>Submenu 2</NavLink></li>
-                            </ul>
-                        </li>
+                        {
+                            user && <>
+                                <li className='mb-1'>
+                                    <NavLink className='text-black'>Dashboard</NavLink>
+                                    <ul className="p-2">
+                                        <li><NavLink className='mb-1 text-black'>Submenu 1</NavLink></li>
+                                        <li><NavLink className='mb-1 text-black'>Submenu 2</NavLink></li>
+                                    </ul>
+                                </li>
+                            </>
+                        }
                     </ul>
                 </div>
                 {/* <img className='w-12 h-12' src={logo} alt="" /> */}
@@ -48,34 +52,38 @@ const Navbar = () => {
                     <ul className="menu menu-horizontal px-1 z-[1]">
                         <li className='mr-1'><NavLink to='/' className='text-white'>Home</NavLink></li>
                         <li className='mr-1'><NavLink to='/marathons' className='text-white'>Marathons</NavLink></li>
-                        <li className='mr-1'>
-                            <details>
-                                <summary className='text-white'>Dashboard</summary>
-                                <ul className="p-2">
-                                    <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
-                                    <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
-                                </ul>
-                            </details>
-                        </li>
+                        {
+                            user && <>
+                                <li className='mr-1'>
+                                    <details>
+                                        <summary className='text-white'>Dashboard</summary>
+                                        <ul className="p-2">
+                                            <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
+                                            <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
+                                        </ul>
+                                    </details>
+                                </li>
+                            </>
+                        }
                     </ul>
                 </div>
                 {
-                  user &&  user ? <>
-                  <button onClick={getLogOut} className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign Out</button>
-                  <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img
-                            alt="avator"
-                            src={user && user?.photoURL} />
-                    </div>
-                </div>
-                  </>
+                    user && user ? <>
+                        <button onClick={getLogOut} className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign Out</button>
+                        <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                            <div className="w-10 rounded-full">
+                                <img
+                                    alt="avator"
+                                    src={user && user?.photoURL} />
+                            </div>
+                        </div>
+                    </>
                         : <>
                             <NavLink to='/login' className="mr-2 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Login</NavLink>
                             <NavLink to='/signUp' className="mr-1 bg-white py-1 px-4 font-medium text-sm rounded-3xl">Sign up</NavLink>
                         </>
                 }
-                
+
             </div>
         </div>
     );
