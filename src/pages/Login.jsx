@@ -7,7 +7,7 @@ const Login = () => {
     return (
         <div className="relative max-w-7xl mx-auto">
             <div className="flex justify-center items-center my-16">
-                <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+                <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
                     <p className="text-center text-blue-500 pb-2">Welcome back</p>
                     <h2 className="text-2xl font-bold text-center mb-4">Member Login</h2>
                     <p className="text-center text-sm text-gray-600 mb-6">
@@ -64,11 +64,11 @@ const Login = () => {
                     </form>
 
                     <p className="text-center text-sm text-gray-600 mt-4">
-                    Don&apos;t have an Account?<Link to='/signUp' className="text-blue-500">Register</Link>
+                    Don&apos;t have an Account?<Link to='/signUp' className="text-blue-500">Sign up</Link>
                     </p>
                 </div>
             </div>
-            <div className="absolute top-20 right-28 h-96 w-96">
+            <div className="absolute top-20 right-28 h-96 w-80">
                 <Lottie animationData={login_enimation}></Lottie>
             </div>
         </div>
