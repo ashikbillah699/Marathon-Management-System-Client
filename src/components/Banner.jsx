@@ -69,7 +69,7 @@ const Banner = () => {
                     <img
                         src={slides[currentSlide].image}
                         alt="Slide"
-                        className="mx-auto lg:w-[400px] lg:h-[700px] md:w-[300px] md:h-[500px]"
+                        className="mx-auto lg:w-[400px] lg:h-[630px] md:w-[300px] sm:h-[500px]"
                     />
                 </div>
             </div>

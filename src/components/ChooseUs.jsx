@@ -4,7 +4,7 @@ import { FaPeopleArrows } from 'react-icons/fa';
 
 const ChooseUs = () => {
     return (
-        <div className="bg-gray-950 text-white py-28 px-4 md:px-8 lg:px-16 border-y border-red-500">
+        <div className="bg-gray-950 text-white py-28 px-2 md:px-8 lg:px-16 border-y border-red-500">
             <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8">
                 <div className="lg:w-1/3 text-center lg:text-left space-y-6">
                     <h2 className="text-3xl md:text-4xl font-bold">

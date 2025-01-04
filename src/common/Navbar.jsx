@@ -34,15 +34,15 @@ const Navbar = () => {
                                 <li className='mb-1'>
                                     <NavLink className='text-black'>Dashboard</NavLink>
                                     <ul className="p-2">
-                                        <li><NavLink className='mb-1 text-black'>Submenu 1</NavLink></li>
-                                        <li><NavLink className='mb-1 text-black'>Submenu 2</NavLink></li>
+                                        <li><NavLink to='/addMarathon' className='mb-1 text-black'>Add Marathon</NavLink></li>
+                                        <li><NavLink to='/myMarathons' className='mb-1 text-black'>My Marathons</NavLink></li>
+                                        <li><NavLink to='/myApplyList' className='mb-1 text-black'>My Apply List</NavLink></li>
                                     </ul>
                                 </li>
                             </>
                         }
                     </ul>
                 </div>
-                {/* <img className='w-12 h-12' src={logo} alt="" /> */}
                 <FaRunning className='w-12 h-12 text-red-500' />
                 <NavLink to='/' className=" font-bold ml-3 italic pt-2 text-2xl text-red-500">RACEPOINT</NavLink>
 
@@ -58,8 +58,9 @@ const Navbar = () => {
                                     <details>
                                         <summary className='text-white'>Dashboard</summary>
                                         <ul className="p-2">
-                                            <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
-                                            <li><NavLink className='mb-1 text-black'>Submenu</NavLink></li>
+                                            <li><NavLink to='/addMarathon' className='mb-1 text-black'>Add Marathon</NavLink></li>
+                                            <li><NavLink to='/myMarathons' className='mb-1 text-black'>My Marathons</NavLink></li>
+                                            <li><NavLink to='/myApplyList' className='mb-1 text-black'>My Apply List</NavLink></li>
                                         </ul>
                                     </details>
                                 </li>
