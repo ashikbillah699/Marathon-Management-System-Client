@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./addMarathon.css"
 import { AuthContext } from "../provider/AuthProvider";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 const AddMarathonPage = () => {
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
@@ -10,9 +12,9 @@ const AddMarathonPage = () => {
     const [marathonStartDate, setMarathonStartDate] = useState(null);
     const {user} = useContext(AuthContext);
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
-        const formData = {
+        const marathonData = {
             marathonCreater: {
                 email: user?.email,
                 displayName: user?.displayName,
@@ -30,8 +32,15 @@ const AddMarathonPage = () => {
             totalRegistrationCount: parseInt(e.target.totalRegistrationCount.value), 
         };
 
-        console.log("Marathon Data: ", formData);
-        alert("Marathon Created Successfully!");
+        await axios.post(`${import.meta.env.VITE_API_URL}/marathon`, marathonData)
+        .then(res => {
+            console.log(res.data);
+            if(res.data.insertedId){
+                toast.success("Your marathon successfully add!!")
+            }
+        })
+
+        
     };
 
     return (
