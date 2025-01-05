@@ -57,7 +57,7 @@ const Navbar = () => {
                                 <li className='mr-1'>
                                     <details>
                                         <summary className='text-white'>Dashboard</summary>
-                                        <ul className="p-2">
+                                        <ul className="p-2 w-36">
                                             <li><NavLink to='/addMarathon' className='mb-1 text-black'>Add Marathon</NavLink></li>
                                             <li><NavLink to='/myMarathons' className='mb-1 text-black'>My Marathons</NavLink></li>
                                             <li><NavLink to='/myApplyList' className='mb-1 text-black'>My Apply List</NavLink></li>
