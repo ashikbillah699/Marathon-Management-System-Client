@@ -10,6 +10,7 @@ import PrivetRoute from "./PrivetRoute";
 import AddMarathon from "../pages/AddMarathon";
 import MyMarathons from "../pages/MyMarathons";
 import MyApplyList from "../pages/MyApplyList";
+import MarathonDetails from "../components/MarathonDetails";
 
 
 const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: '/addMarathon',
                 element: <PrivetRoute><AddMarathon></AddMarathon></PrivetRoute>
+            },
+            {
+                path: '/marathonDetails',
+                element: <MarathonDetails></MarathonDetails>
             },
             {
                 path: '/myMarathons',

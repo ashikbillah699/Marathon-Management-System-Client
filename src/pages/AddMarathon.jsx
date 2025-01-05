@@ -10,9 +10,9 @@ const AddMarathonPage = () => {
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
-    const handleSubmit =async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const marathonData = {
             marathonCreater: {
@@ -29,18 +29,23 @@ const AddMarathonPage = () => {
             description: e.target.description.value,
             marathonImage: e.target.marathonImage.value,
             createdAt: e.target.createdAt.value,
-            totalRegistrationCount: parseInt(e.target.totalRegistrationCount.value), 
+            totalRegistrationCount: parseInt(e.target.totalRegistrationCount.value),
         };
 
-        await axios.post(`${import.meta.env.VITE_API_URL}/marathon`, marathonData)
-        .then(res => {
-            console.log(res.data);
-            if(res.data.insertedId){
-                toast.success("Your marathon successfully add!!")
-            }
-        })
+        try {
+            await axios.post(`${import.meta.env.VITE_API_URL}/marathon`, marathonData)
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertedId) {
+                        toast.success("Your marathon successfully add!!")
+                    }
+                })
+        }
+        catch (err) {
+            toast.error(err.message);
+        }
 
-        
+
     };
 
     return (
