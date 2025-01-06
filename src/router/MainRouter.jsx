@@ -12,6 +12,7 @@ import MyMarathons from "../pages/MyMarathons";
 import MyApplyList from "../pages/MyApplyList";
 import MarathonDetails from "../components/MarathonDetails";
 import MarathonRegistation from "../pages/MarathonRegistation";
+import ErrorPage from "../pages/ErrorPage";
 
 
 const router = createBrowserRouter([
@@ -37,7 +38,7 @@ const router = createBrowserRouter([
                 loader: ({params})=> fetch(`${import.meta.env.VITE_API_URL}/marathons/${params.id}`)
             },
             {
-                path: '/marathonRagistation',
+                path: '/marathonRagistation/:id',
                 element: <PrivetRoute><MarathonRegistation></MarathonRegistation></PrivetRoute>
             },
             {
@@ -57,6 +58,9 @@ const router = createBrowserRouter([
                 element: <SignUp></SignUp>
             }
         ]
+    },{
+        path:'*',
+        element: <ErrorPage></ErrorPage>
     }
 ])
 

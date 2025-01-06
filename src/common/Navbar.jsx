@@ -45,7 +45,6 @@ const Navbar = () => {
                 </div>
                 <FaRunning className='w-12 h-12 text-red-500' />
                 <NavLink to='/' className=" font-bold ml-3 italic pt-2 text-2xl text-red-500">RACEPOINT</NavLink>
-
             </div>
             <div className="navbar-end">
                 <div className="hidden lg:flex">
@@ -74,6 +73,7 @@ const Navbar = () => {
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
                                 <img
+                                    referrerPolicy='no-referrer'
                                     alt="avator"
                                     src={user && user?.photoURL} />
                             </div>

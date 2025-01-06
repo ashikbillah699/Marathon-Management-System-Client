@@ -34,6 +34,10 @@ const AddMarathonPage = () => {
             totalRegistrationCount: parseInt(e.target.totalRegistrationCount.value),
         };
 
+        if(marathonStartDate <= endRegistrationDate){
+            return toast.error("Please fixed valid Marathon start date!!")
+        }
+
         try {
             await axios.post(`${import.meta.env.VITE_API_URL}/marathon`, marathonData)
                 .then(res => {

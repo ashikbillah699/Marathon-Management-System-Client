@@ -4,29 +4,40 @@ import { Link, useLoaderData } from "react-router-dom";
 import { format } from "date-fns";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 
 
 const MarathonDetails = () => {
     const marathonDetailsData = useLoaderData();
-    const {user} = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
 
     const { description, createdAt, startRegistrationDate,
         endRegistrationDate, location, marathonStartDate,
-        marathonImage, marathonTitle, runningDistance, totalRegistrationCount,marathonCreater } = marathonDetailsData;
-    console.log(marathonDetailsData);
+        marathonImage, marathonTitle, runningDistance, totalRegistrationCount,
+        marathonCreater, _id } = marathonDetailsData;
 
     const currentDate = new Date();
     const isRegistrationOpen =
         new Date(startRegistrationDate) <= currentDate &&
         currentDate <= new Date(endRegistrationDate) && user?.email !== marathonCreater?.email;
-    if(!(new Date(startRegistrationDate) <= currentDate &&
-    currentDate <= new Date(endRegistrationDate))){
-         toast.error('Registration is not available!!')
-    }
-    if(!(user?.email !== marathonCreater?.email)){
-         toast.error('Hey, It is your creation!!')
-    }
+     
+        // try{
+        //     if (!isRegistrationOpen) {
+        //         if (!(new Date(startRegistrationDate) <= currentDate &&
+        //             currentDate <= new Date(endRegistrationDate))) {
+        //              toast.error('Registration is not available!!')
+        //         }
+        //         if (!(user?.email !== marathonCreater?.email)) {
+        //              toast.error('Hey, It is your creation!!')
+        //         }
+        //     }
+        // }
+        // catch(err){
+        //     toast.error(err.message)
+        // }
+
+
+
 
     return (
         <div>
@@ -71,12 +82,12 @@ const MarathonDetails = () => {
                         </li>
                         <li>
                             <FaCalendarAlt className="inline mr-2 text-gray-400" />
-                            <span className="font-semibold">Created At: </span> {createdAt}
+                            <span className="font-semibold">Created At: </span> {format(new Date(createdAt), 'PP')}
                         </li>
                         <li>
-                            <span className="font-semibold">Total Registration Count: </span> {totalRegistrationCount}
+                            <span className="font-semibold">Total Registration: </span> {totalRegistrationCount}
                         </li>
-                        <Link to='/marathonRagistation'>
+                        <Link to={`/marathonRagistation/${_id}`}>
                             <button
                                 className={`mt-3 sm:mx-auto md:mx-0 text-white py-2 px-4 rounded-full flex items-center ${isRegistrationOpen
                                     ? "bg-red-500 hover:bg-red-600 cursor-pointer"
