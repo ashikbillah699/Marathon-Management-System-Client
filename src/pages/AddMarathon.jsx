@@ -5,12 +5,14 @@ import "./addMarathon.css"
 import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const AddMarathonPage = () => {
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
     const [endRegistrationDate, setEndRegistrationDate] = useState(null);
     const [marathonStartDate, setMarathonStartDate] = useState(null);
     const { user } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -38,6 +40,8 @@ const AddMarathonPage = () => {
                     console.log(res.data);
                     if (res.data.insertedId) {
                         toast.success("Your marathon successfully add!!")
+                        e.target.reset();
+                        navigate('/marathons')
                     }
                 })
         }
