@@ -4,11 +4,22 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import { FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import UpdateModal from "../components/UpdateModal";
 
 
 const MyMarathons = () => {
     const { user } = useContext(AuthContext);
     const [marathons, setMarathons] = useState([]);
+    const navigate = useNavigate()
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [marathonData, setMarathonData] = useState({})
+
+    const openModal = () => setModalOpen(true);
+    const closeModal = () => setModalOpen(false);
+
 
     const fatchAllMarathons = async () => {
         if (!user?.email) {
@@ -28,7 +39,48 @@ const MyMarathons = () => {
 
     useEffect(() => {
         fatchAllMarathons()
-    }, [user?.email])
+    }, [user?.email]);
+
+    // delete data
+    const handleDelete = (id) => {
+        try {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(async (result) => {
+                if (result.isConfirmed) {
+                    await axios.delete(`${import.meta.env.VITE_API_URL}/marathon/${id}`)
+                        .then(res => {
+                            if (res.data.deletedCount) {
+                                console.log(res.data)
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+                            }
+                            fatchAllMarathons();
+                        })
+
+                }
+            });
+
+
+        } catch (err) {
+            toast.error(err.message);
+        }
+    }
+
+    // update data
+    const handleUpdeate = marathon =>{
+        setMarathonData(marathon)
+        openModal();
+    }
 
     return (
         <div className="max-w-7xl mx-auto">
@@ -64,16 +116,20 @@ const MyMarathons = () => {
                     </div>
                     <div className="divider divider-horizontal divider-error"></div>
                     <div className="w-full md:w-1/5 text-center md:text-right space-y-5">
-                        <button className="border border-white py-2 px-8 text-sm rounded-xl hover:bg-green-500 duration-700 hover:border-green-900  w-full sm:w-auto">
+                        <button onClick= {()=>handleUpdeate(marathon)} className="border border-white py-2 px-8 text-sm rounded-xl hover:bg-green-500 duration-700 hover:border-green-900  w-full sm:w-auto">
                             Update
                         </button>
-                        <button className="border py-2 px-8 text-sm rounded-xl bg-red-500 duration-700 border-red-500  w-full sm:w-auto">
+                        <button onClick={() => handleDelete(marathon._id)} className="border py-2 px-8 text-sm rounded-xl bg-red-500 duration-700 border-red-500  w-full sm:w-auto">
                             Delete
                         </button>
-                        <button className="border border-white py-2 px-8 text-sm rounded-xl hover:bg-blue-500 duration-700 hover:border-blue-500  w-full sm:w-auto">
+                        <button onClick={() => navigate(`/marathonDetails/${marathon._id}`)} className="border border-white py-2 px-8 text-sm rounded-xl hover:bg-blue-500 duration-700 hover:border-blue-500  w-full sm:w-auto">
                             Details
                         </button>
                     </div>
+
+                    {/* update modal */}
+                    <UpdateModal data={marathonData} isOpen={isModalOpen} onClose={closeModal} fatchAllMarathons={fatchAllMarathons}></UpdateModal>
+
                 </div>)
             }
         </div>

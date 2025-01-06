@@ -2,19 +2,31 @@ import { FaCalendarAlt, FaMapMarkerAlt, FaRoad } from "react-icons/fa";
 import { PiCashRegisterFill } from "react-icons/pi";
 import { Link, useLoaderData } from "react-router-dom";
 import { format } from "date-fns";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 
 const MarathonDetails = () => {
     const marathonDetailsData = useLoaderData();
+    const {user} = useContext(AuthContext);
+
     const { description, createdAt, startRegistrationDate,
         endRegistrationDate, location, marathonStartDate,
-        marathonImage, marathonTitle, runningDistance, totalRegistrationCount } = marathonDetailsData;
+        marathonImage, marathonTitle, runningDistance, totalRegistrationCount,marathonCreater } = marathonDetailsData;
     console.log(marathonDetailsData);
 
     const currentDate = new Date();
     const isRegistrationOpen =
         new Date(startRegistrationDate) <= currentDate &&
-        currentDate <= new Date(endRegistrationDate);
+        currentDate <= new Date(endRegistrationDate) && user?.email !== marathonCreater?.email;
+    if(!(new Date(startRegistrationDate) <= currentDate &&
+    currentDate <= new Date(endRegistrationDate))){
+         toast.error('Registration is not available!!')
+    }
+    if(!(user?.email !== marathonCreater?.email)){
+         toast.error('Hey, It is your creation!!')
+    }
 
     return (
         <div>

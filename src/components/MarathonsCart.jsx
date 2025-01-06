@@ -8,10 +8,10 @@ const MarathonsCart = ({ marathon }) => {
 
     console.log(marathon)
     const { marathonTitle, marathonImage, location, startRegistrationDate, endRegistrationDate, _id } = marathon;
-    
+
     return (
         <div className=" border border-red-500 rounded-xl overflow-hidden">
-            <div className="p-3 relative">
+            <div className="p-3 relative min-h-44">
                 <h3 className="text-2xl font-semibold text-gray-100 w-3/4 mb-6">{marathonTitle}</h3>
                 <div className="flex  items-center my-2">
                     <span className="text-md text-gray-100">Registration:</span>
