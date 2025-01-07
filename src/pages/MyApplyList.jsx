@@ -117,6 +117,7 @@ const MyApplyList = () => {
                     className="mt-10 flex flex-col md:flex-row border border-red-500 text-white rounded-xl shadow-md p-4 items-center gap-4"> {/* Image Section */}
                     <div className="flex items-center gap-4 md:w-5/12">
                         <img
+                            referrerPolicy="no-reffer"
                             className="rounded-full w-16"
                             alt="user img"
                             src={user?.photoURL}

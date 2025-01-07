@@ -4,6 +4,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { format } from "date-fns";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
+import MarathonCountdown from "./MarathonCountdown";
 // import toast from "react-hot-toast";
 
 
@@ -20,21 +21,21 @@ const MarathonDetails = () => {
     const isRegistrationOpen =
         new Date(startRegistrationDate) <= currentDate &&
         currentDate <= new Date(endRegistrationDate) && user?.email !== marathonCreater?.email;
-     
-        // try{
-        //     if (!isRegistrationOpen) {
-        //         if (!(new Date(startRegistrationDate) <= currentDate &&
-        //             currentDate <= new Date(endRegistrationDate))) {
-        //              toast.error('Registration is not available!!')
-        //         }
-        //         if (!(user?.email !== marathonCreater?.email)) {
-        //              toast.error('Hey, It is your creation!!')
-        //         }
-        //     }
-        // }
-        // catch(err){
-        //     toast.error(err.message)
-        // }
+
+    // try{
+    //     if (!isRegistrationOpen) {
+    //         if (!(new Date(startRegistrationDate) <= currentDate &&
+    //             currentDate <= new Date(endRegistrationDate))) {
+    //              toast.error('Registration is not available!!')
+    //         }
+    //         if (!(user?.email !== marathonCreater?.email)) {
+    //              toast.error('Hey, It is your creation!!')
+    //         }
+    //     }
+    // }
+    // catch(err){
+    //     toast.error(err.message)
+    // }
 
 
 
@@ -87,17 +88,20 @@ const MarathonDetails = () => {
                         <li>
                             <span className="font-semibold">Total Registration: </span> {totalRegistrationCount}
                         </li>
-                        <Link to={`/marathonRagistation/${_id}`}>
-                            <button
-                                className={`mt-3 sm:mx-auto md:mx-0 text-white py-2 px-4 rounded-full flex items-center ${isRegistrationOpen
-                                    ? "bg-red-500 hover:bg-red-600 cursor-pointer"
-                                    : "bg-gray-500 cursor-not-allowed"
-                                    }`}
-                                disabled={!isRegistrationOpen}
-                            >
-                                Register here <PiCashRegisterFill className="ml-2" />
-                            </button>
-                        </Link>
+                        <div className="flex justify-between items-center">
+                            <MarathonCountdown marathonStartDate={marathonStartDate}></MarathonCountdown>
+                            <Link to={`/marathonRagistation/${_id}`}>
+                                <button
+                                    className={`mt-3 sm:mx-auto md:mx-0 text-white py-2 px-4 rounded-full flex items-center ${isRegistrationOpen
+                                        ? "bg-red-500 hover:bg-red-600 cursor-pointer"
+                                        : "bg-gray-500 cursor-not-allowed"
+                                        }`}
+                                    disabled={!isRegistrationOpen}
+                                >
+                                    Register here <PiCashRegisterFill className="ml-2" />
+                                </button>
+                            </Link>
+                        </div>
                     </ul>
                 </div>
             </div>
