@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 
 const SignUp = () => {
@@ -59,6 +60,9 @@ const SignUp = () => {
 
     return (
         <div className="relative max-w-7xl mx-auto">
+            <Helmet>
+                <title>Sign Up</title>
+            </Helmet>
             <div className="flex justify-center items-center my-16">
                 <div className="w-full max-w-xl bg-white p-8 rounded-lg shadow-md">
                     <p className="text-center text-blue-500 pb-2">Sign up</p>

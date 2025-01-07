@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 
 
@@ -6,6 +7,9 @@ const ErrorPage = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white">
+            <Helmet>
+                <title>Page Not Found</title>
+            </Helmet>
             <div className="text-center">
                 <h1 className="text-8xl font-extrabold text-red-500">404</h1>
                 <p className="mt-4 text-2xl font-semibold">Oops! Page Not Found</p>

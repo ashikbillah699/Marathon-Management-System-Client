@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import UpdateModal from "../components/UpdateModal";
+import { Helmet } from "react-helmet";
 
 
 const MyMarathons = () => {
@@ -84,6 +85,9 @@ const MyMarathons = () => {
 
     return (
         <div className="max-w-7xl mx-auto">
+            <Helmet>
+                <title>My Marathons</title>
+            </Helmet>
             <div className="text-center my-12">
                 <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">Your Posted Marathons</h2>
             </div>

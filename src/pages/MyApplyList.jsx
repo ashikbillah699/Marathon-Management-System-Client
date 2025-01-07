@@ -8,6 +8,7 @@ import toast from "react-hot-toast";
 import { format } from "date-fns";
 import { MdDriveFileRenameOutline } from "react-icons/md";
 import RegisterUpdateModal from "../components/registerUpdateModal";
+import { Helmet } from "react-helmet";
 
 
 const MyApplyList = () => {
@@ -83,6 +84,9 @@ const MyApplyList = () => {
     }
     return (
         <div className="max-w-7xl mx-auto">
+            <Helmet>
+                <title>My Apply List</title>
+            </Helmet>
             <div className="text-center my-12">
                 <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">All Registrations</h2>
             </div>

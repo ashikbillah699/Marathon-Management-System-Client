@@ -4,6 +4,7 @@ import login_enimation from '../assets/Animation - 1733964488290.json'
 import { useContext, useState } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet";
 
 
 const Login = () => {
@@ -52,6 +53,9 @@ const Login = () => {
 
     return (
         <div className="relative max-w-7xl mx-auto">
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <div className="flex justify-center items-center my-16">
                 <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
                     <p className="text-center text-blue-500 pb-2">Welcome back</p>

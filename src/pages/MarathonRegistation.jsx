@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 import { format } from "date-fns";
+import { Helmet } from "react-helmet";
 
 const MarathonRegistation = () => {
     const [marathon, setMarathon] = useState({});
@@ -67,6 +68,9 @@ const MarathonRegistation = () => {
 
     return (
         <div className="max-w-4xl mx-auto ">
+            <Helmet>
+                <title>Marathon Registration</title>
+            </Helmet>
             <div className="text-center my-10">
                 <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10"> Ragistration</h2>
             </div>

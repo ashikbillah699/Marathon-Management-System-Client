@@ -6,6 +6,7 @@ import { AuthContext } from "../provider/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const AddMarathonPage = () => {
     const [startRegistrationDate, setStartRegistrationDate] = useState(null);
@@ -58,6 +59,9 @@ const AddMarathonPage = () => {
 
     return (
         <div className="max-w-4xl mx-auto p-8 ">
+            <Helmet>
+                <title>Add Marathon</title>
+            </Helmet>
             <h2 className="text-2xl font-bold mb-6 text-center border-b border-red-500 text-white">Add Marathon</h2>
             <form className="grid gap-6 md:grid-cols-2" onSubmit={handleSubmit}>
                 {/* Marathon Title */}
