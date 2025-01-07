@@ -16,6 +16,7 @@ const MyApplyList = () => {
     const [allRegistration, setAllRegistration] = useState([]);
     const [isModalOpen, setModalOpen] = useState(false);
     const [applyData, setApplyData] = useState({})
+    const [search, setSearch] = useState('')
 
     const openModal = () => setModalOpen(true);
     const closeModal = () => setModalOpen(false);
@@ -29,7 +30,7 @@ const MyApplyList = () => {
             return;
         }
         try {
-            await axios.get(`${import.meta.env.VITE_API_URL}/registationsSpecific/${user?.email}`)
+            await axios.get(`${import.meta.env.VITE_API_URL}/registationsSpecific/${user?.email}?search=${search}`)
                 .then(res => {
                     setAllRegistration(res.data)
                 })
@@ -41,7 +42,7 @@ const MyApplyList = () => {
 
     useEffect(() => {
         fatchAllallRegistration()
-    }, [user?.email]);
+    }, [user?.email, search]);
 
     // delete data
     const handleDelete = (id) => {
@@ -89,6 +90,26 @@ const MyApplyList = () => {
             </Helmet>
             <div className="text-center my-12">
                 <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">All Registrations</h2>
+            </div>
+            {/* search input */}
+            <div>
+                <label className="input  flex items-center bg-gray-800 border border-red-500 gap-2 max-w-60">
+                    <input
+                        onChange={e => setSearch(e.target.value)}
+                        type="text"
+                        className="text-white"
+                        placeholder="Search" />
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        className="h-4 w-4 opacity-70 text-white">
+                        <path
+                            fillRule="evenodd"
+                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                            clipRule="evenodd" />
+                    </svg>
+                </label>
             </div>
             {
                 allRegistration.map(registration => <div

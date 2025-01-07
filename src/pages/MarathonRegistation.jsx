@@ -56,7 +56,6 @@ const MarathonRegistation = () => {
                         });
                         e.target.reset();
                         navigate('/myApplyList')
-
                     }
                 })
         }
@@ -72,7 +71,7 @@ const MarathonRegistation = () => {
                 <title>Marathon Registration</title>
             </Helmet>
             <div className="text-center my-10">
-                <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10"> Ragistration</h2>
+                <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10"> My Apply List</h2>
             </div>
             <div className="p-5">
                 <form onSubmit={handleSubmit} className="space-y-6">
