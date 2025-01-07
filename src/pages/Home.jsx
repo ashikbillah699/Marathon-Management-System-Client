@@ -3,6 +3,7 @@ import Banner from "../components/Banner";
 import ChooseUs from "../components/ChooseUs";
 import UpCommingEvent from "../components/UpCommingEvent";
 import { Helmet } from "react-helmet";
+import HomeMarathons from "./HomeMarathons";
 
 
 const Home = () => {
@@ -13,8 +14,9 @@ const Home = () => {
             </Helmet>
             <Banner></Banner>
             <About></About>
-            <UpCommingEvent></UpCommingEvent>
+            <HomeMarathons></HomeMarathons>
             <ChooseUs></ChooseUs>
+            <UpCommingEvent></UpCommingEvent>
         </div>
     );
 };
