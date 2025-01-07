@@ -89,7 +89,7 @@ const MyMarathons = () => {
                 <title>My Marathons</title>
             </Helmet>
             <div className="text-center my-12">
-                <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">Your Posted Marathons</h2>
+                <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">My Posted Marathons</h2>
             </div>
             {
                 marathons.map(marathon => <div
