@@ -1,20 +1,22 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MarathonsCart from "../components/MarathonsCart";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../provider/AuthProvider";
 
 const Marathons = () => {
     const [marathons, setMarathons] = useState([]);
+    const {user} = useContext(AuthContext)
     const [sort, setSort] = useState('')
     console.log(sort)
 
     useEffect(() => {
         const fatchAllMarathons = async () => {
-            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/marathons?sort=${sort}`)
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/marathons?sort=${sort}&email=${user?.email}`,{withCredentials:true})
             setMarathons(data)
         }
         fatchAllMarathons()
-    }, [sort])
+    }, [sort,user?.email])
 
     return (
         <div className="max-w-7xl mx-auto">

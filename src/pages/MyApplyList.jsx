@@ -30,7 +30,7 @@ const MyApplyList = () => {
             return;
         }
         try {
-            await axios.get(`${import.meta.env.VITE_API_URL}/registationsSpecific/${user?.email}?search=${search}`)
+            await axios.get(`${import.meta.env.VITE_API_URL}/registationsSpecific/${user?.email}?search=${search}`,{withCredentials: true})
                 .then(res => {
                     setAllRegistration(res.data)
                 })
@@ -89,7 +89,7 @@ const MyApplyList = () => {
                 <title>My Apply List</title>
             </Helmet>
             <div className="text-center my-12">
-                <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">All Registrations</h2>
+                <h2 className="text-white text-3xl font-semibold inline-block border-b border-red-500 px-10">All Apply List</h2>
             </div>
             {/* search input */}
             <div>

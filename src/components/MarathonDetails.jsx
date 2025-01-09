@@ -9,8 +9,8 @@ import MarathonCountdown from "./MarathonCountdown";
 
 
 const MarathonDetails = () => {
-    const marathonDetailsData = useLoaderData();
     const { user } = useContext(AuthContext);
+    const marathonDetailsData = useLoaderData();
 
     const { description, createdAt, startRegistrationDate,
         endRegistrationDate, location, marathonStartDate,
@@ -36,10 +36,7 @@ const MarathonDetails = () => {
     // catch(err){
     //     toast.error(err.message)
     // }
-
-
-
-
+    
     return (
         <div>
             <div className="text-center my-10">

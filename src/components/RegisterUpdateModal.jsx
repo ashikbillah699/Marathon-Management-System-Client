@@ -163,7 +163,7 @@ const RegisterUpdateModal = ({ isOpen, onClose, data, fatchAllallRegistration })
                         </div>
                     </div>
                     <div className="text-center">
-                        <button type="submit" className="btn btn-primary">Submit</button>
+                        <button type="submit" className="btn btn-primary">Update</button>
                     </div>
                 </form>
                 <button

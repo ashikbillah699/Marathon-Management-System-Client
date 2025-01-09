@@ -28,10 +28,8 @@ const MyMarathons = () => {
             return;
         }
         try {
-            await axios.get(`${import.meta.env.VITE_API_URL}/marathonsSpecific/${user?.email}`)
-                .then(res => {
-                    setMarathons(res.data)
-                })
+           const res= await axios.get(`${import.meta.env.VITE_API_URL}/marathonsSpecific/${user?.email}`,{withCredentials: true})
+           setMarathons(res.data)
         }
         catch (err) {
             console.log(err.message);
